@@ -1,0 +1,32 @@
+[wokwi]
+name = "Room Temp Monitor (Uno)" # Renamed for clarity
+version = "1.0"
+elf = ".pio/build/uno/firmware.elf"      # Path to the Uno's ELF file
+firmware = ".pio/build/uno/firmware.hex" # Path to the Uno's HEX file (Arduino uses .hex)
+
+# Remove or comment out this [env] section if platformio.ini is your build truth.
+# Wokwi primarily uses the 'elf' and 'firmware' paths to load the firmware.
+# [env]
+# platform = "esp8266"
+# board = "d1mini"
+
+# The [[components]] section below describes components and their connections
+# as if they were connected to an ESP8266 (D4, D0).
+# If you are using the diagram.json provided in the previous step,
+# that diagram file will correctly connect the DHT sensor to Uno pin 2
+# and the LED to Uno pin 8.
+#
+# To avoid confusion, you can remove the 'pin' attributes here if diagram.json
+# is handling the connections, or remove these component blocks entirely if
+# diagram.json defines all parts.
+[[components]]
+type = "dht11"
+id = "tempSensor"
+# attrs = { pin = "D4" } # This is an ESP8266 pin. diagram.json connects to Uno's D2.
+                        # For clarity, you can remove or leave attrs empty: attrs = {}
+
+[[components]]
+type = "led"
+id = "tempLED"
+# attrs = { pin = "D0" }   # This is an ESP8266 pin. diagram.json connects to Uno's D8.
+                          # For clarity, you can remove or leave attrs empty: attrs = {}
