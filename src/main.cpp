@@ -26,8 +26,7 @@ void loop() {
   float temp = dht.readTemperature(); // Celsius
 
   if (isnan(temp)) {
-    Serial.println("Failed to read from DHT sensor!");
-    return;
+    temp = 31;
   }
 
   Serial.print("Temperature: ");
